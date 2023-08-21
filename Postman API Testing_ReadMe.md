@@ -14,28 +14,13 @@ POST '/create_invoice'
 * Open Postman.
 
 * Select the request you're trying to send (e.g., the POST request to /create_invoice).
-
-* In the request headers section, add a Content-Type header with the value application/json.
-	For example:
-		Header: Content-Type
-		Value: application/json
-		
-* In the request body section, make sure you're sending valid JSON data. Ensure that the data is properly formatted as a JSON object.
 	Example:
 		Method: POST
 		URL: http://127.0.0.1:5000/create_invoice
-		Headers:
-			Content-Type: application/json
-			Body (raw JSON data): {"invoice_id": 8}
 
 #### Example ####
 ```
 POST '/create_invoice'
-
-Request Body Sample-
-
-{"invoice_id": 8}
-
 
 Response Body Sample-
 Invoice created successfully
@@ -44,7 +29,7 @@ Invoice created successfully
 
 ### Add an item to the invoice ###
 
-POST '/add_invoice_item/<int:invoice_id>'
+POST '/api/invoice/<int:invoice_id>/invoice_item'
 
 Gives the feasibility to add an item to the previously created Invoice ID.
 
@@ -59,7 +44,7 @@ Mandatory Query Parameter:
 	Create a new request in Postman and make sure to select the POST method.
 
 * Set Request URL:
-	Enter the URL for the add_invoice_item route, replacing {{ invoice_id }} with the actual invoice ID. For example: http://127.0.0.1:5000/add_invoice_item/123.
+	Enter the URL for the add_invoice_item route, replacing {{ invoice_id }} with the actual invoice ID. For example: http://127.0.0.1:5000/api/invoice/8/invoice_item.
 
 * Set Request Body:
 	In the request body section, select the "x-www-form-urlencoded" option. This is because the add_invoice_item route is using "request.form" to retrieve data, which corresponds to form data.
@@ -73,7 +58,7 @@ Mandatory Query Parameter:
 * Example of how your Postman setup might look:
 
 	Method: POST
-	URL: http://127.0.0.1:5000/add_invoice_item/123
+	URL: http://127.0.0.1:5000/api/invoice/8/invoice_item
 	Headers: None
 	Body (x-www-form-urlencoded):
 	Key: units, Value: 10
@@ -82,7 +67,7 @@ Mandatory Query Parameter:
 
 #### Example ####
 ```
-POST '/add_invoice_item/8'
+POST '/api/invoice/8/invoice_item'
 
 Request Body Sample-
 
@@ -101,7 +86,7 @@ Invoice item added successfully
 
 GET '/invoices'
 
-Return the details of the all invoices in a JSON format
+Return the details of the all invoices in a JSON format, as well of the items nested with the invoice.
 
 #### To test the add_invoice_item route using Postman, you can follow these steps ####:
 
@@ -130,32 +115,35 @@ GET /invoices/
 Response Body Sample-
 
 [
-{
-    "date": "2023-08-17",
-    "id": 1
-  },
   {
     "date": "2023-08-17",
-    "id": 2
-  },
-  {
-    "date": "2023-08-17",
-    "id": 3
-  },
-  {
-    "date": "2023-08-17",
-    "id": 4
-  },
-  {
-    "date": "2023-08-17",
-    "id": 5
+    "id": 1,
+    "items": [
+      {
+        "amount": "100",
+        "description": "Item 1",
+        "id": 1,
+        "units": 5
+      },
+      {
+        "amount": "50",
+        "description": "Item 2",
+        "id": 2,
+        "units": 3
+      },
+      {
+        "amount": "450",
+        "description": "Order_line_item",
+        "id": 3,
+        "units": 200
+      }
+    ]
   }
-]
 ```
 
 ### GET a specific invoice details ###
 
-GET '/invoice_items/<int:invoice_id>'
+GET '/api/invoice/<int:invoice_id>/invoice_items'
 
 GET the details of a specific invoice in a JSON return format
 
@@ -168,7 +156,7 @@ GET the details of a specific invoice in a JSON return format
 
 * Set Request Type and URL:
 	Set the request type to GET and enter the URL for the get_invoice_items route. Replace {{ invoice_id }} with the actual invoice ID you want to retrieve items for. 
-	Example: http://127.0.0.1:5000/invoice_items/8
+	Example: http://127.0.0.1:5000/api/invoice/<int:invoice_id>/invoice_items
 
 * Send the Request:
 	Click the "Send" button to send the GET request to the specified URL.
@@ -176,7 +164,7 @@ GET the details of a specific invoice in a JSON return format
 #### Example ####
 
 ```
-GET /invoice_tems/8
+GET api/invoice/8/invoice_items
 
 Response Body Sample-
 
