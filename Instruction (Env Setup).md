@@ -40,7 +40,7 @@ Before you begin, make sure you have the following installed on your system:
 5. **Run the Application:**
   
     * Run the application using the following command:
-      python run_app.py
+      python controller.py
 
 6. **Access the Application:**
 
