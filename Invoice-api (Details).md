@@ -16,15 +16,14 @@ Creates the invoice with a new Invoice ID.
 ```
 POST '/create_invoice'
 
-Request Body Sample-
+Expected Response Sample-
 
-{"invoice_id": 8}
-  
+Invoice created successfully (on Postman Interface)  
 ```
 
 ### Add an item to the invoice ###
 
-POST '/add_invoice_item/<int:invoice_id>'
+POST '/api/invoice/<int:invoice_id>/invoice_item'
 
 Gives the feasibility to add an item to the previously created Invoice ID.
 
@@ -33,7 +32,7 @@ Mandatory Query Parameter:
 
 #### Example ####
 ```
-POST '/add_invoice_item/8'
+POST '/api/invoice/8/invoice_item'
 
 Request Body Sample-
 
@@ -59,39 +58,42 @@ GET /invoices/
 Response Body Sample-
 
 [
-{
-    "date": "2023-08-17",
-    "id": 1
-  },
   {
     "date": "2023-08-17",
-    "id": 2
-  },
-  {
-    "date": "2023-08-17",
-    "id": 3
-  },
-  {
-    "date": "2023-08-17",
-    "id": 4
-  },
-  {
-    "date": "2023-08-17",
-    "id": 5
+    "id": 1,
+    "items": [
+      {
+        "amount": "100",
+        "description": "Item 1",
+        "id": 1,
+        "units": 5
+      },
+      {
+        "amount": "50",
+        "description": "Item 2",
+        "id": 2,
+        "units": 3
+      },
+      {
+        "amount": "450",
+        "description": "Order_line_item",
+        "id": 3,
+        "units": 200
+      }
+    ]
   }
-]
 ```
 
 ### GET a specific invoice details ###
 
-GET '/invoice_items/<int:invoice_id>'
+GET '/api/invoice/<int:invoice_id>/invoice_items'
 
 GET the details of a specific invoice in a JSON return format
 
 #### Example ####
 
 ```
-GET /invoice_tems/8
+GET /api/invoice/8/invoice_items
 
 Response Body Sample-
 
