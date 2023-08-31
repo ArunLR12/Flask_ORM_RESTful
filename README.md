@@ -34,3 +34,9 @@ We have added two models in the code 'Invoice' and 'InvoiceItem'. When framework
   * pip install flask-sqlalchemy
 
 * Download and install Postman (You can download and install it from the official website)
+
+## Instruction to run docker file ##
+
+Go to main working directory where the 'docker-compose.yml' and 'Dockerfile' is located and run the below mentioned command:
+
+* docker-compose up
