@@ -1,20 +1,20 @@
 version: '3'
 services:
-  flask-app:
-    build: ./app  # Path to your Flask app directory containing Dockerfile
+  app:
+    build: .
     ports:
-      - "5000:5000"  # Map container port to host port
+      - "5000:5000"
     environment:
-      - FLASK_ENV=development  # Set Flask environment
+      FLASK_ENV: production
     depends_on:
-      - mysql-db  # Depend on the mysql-db service
+      - db
 
-  mysql-db:
+  db:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: root  # Set MySQL root password
-      MYSQL_DATABASE: DBName  # Set the database name
-      MYSQL_USER: root  # Set MySQL user
-      MYSQL_PASSWORD: root  # Set MySQL password
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: shivdb_17aug
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
     ports:
-      - "3306:3306"  # Map container port to host port
+      - "3306:3306"
