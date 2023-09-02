@@ -43,9 +43,13 @@ Go to main working directory where the 'docker-compose.yml' and 'Dockerfile' is 
 
 **NOTE**: Check for the containers that all of them are running (i.e. 'app' and 'db' containers). 
       ## If 'app' container is failing ##
+      
       * If you have mysql installed on the local machine, stop the service for the same.
+      
       * Go to mysql-workbench and create a new default db connection with username 'root' and password '12345'
+      
       * Once the conncection is established, run the below mentioned query:
         **ALTER USER 'root'@'%' IDENTIFIED WITH 'mysql_native_password' BY '12345';**
+        
       * Re-start the 'app' container again
 
