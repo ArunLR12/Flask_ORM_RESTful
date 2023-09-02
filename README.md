@@ -40,3 +40,7 @@ We have added two models in the code 'Invoice' and 'InvoiceItem'. When framework
 Go to main working directory where the 'docker-compose.yml' and 'Dockerfile' is located and run the below mentioned command:
 
 * docker-compose up
+
+NOTE: Check for the containers that all of them are running (i.e. 'app' and 'db' containers). 
+      If 'app' container is failing, try to re-run again (aleast thrice).
+
