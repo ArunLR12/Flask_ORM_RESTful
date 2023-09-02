@@ -13,6 +13,7 @@ RUN apt-get update && \
     build-essential libmariadb-dev pkg-config && \
     rm -rf /var/lib/apt/lists/*
 
+
 # Copying the requirements file into the container at /demoApp
 COPY requirements.txt /app/
 
@@ -26,4 +27,4 @@ COPY . /app/
 EXPOSE 5000
 
 # Specify the command to run your application
-CMD ["python", "demoApp/controller.py"]
+CMD ["python", "controller.py"]
