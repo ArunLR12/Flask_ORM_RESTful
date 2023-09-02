@@ -26,4 +26,4 @@ COPY . /app/
 EXPOSE 5000
 
 # Specify the command to run your application
-CMD ["python", "controller.py"]
+CMD ["python", "demoApp/controller.py"]
