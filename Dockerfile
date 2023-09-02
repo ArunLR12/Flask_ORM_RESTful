@@ -7,7 +7,7 @@ RUN pip install SQLAlchemy
 # Setting the working directory in the container
 WORKDIR /app
 
-# Install system packages required for building Python packages that depend on MariaDB (MySQL)
+# Install system packages required for building Python packages that depend on MySQL
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     build-essential libmariadb-dev pkg-config && \
