@@ -43,7 +43,7 @@ Go to main working directory where the 'docker-compose.yml' and 'Dockerfile' is 
 
 **NOTE**: Check for the containers that all of them are running (i.e. 'app' and 'db' containers). 
 
-      **## If 'app' container is failing ##**
+      <b> If 'app' container is failing </b>
       
       * If you have mysql installed on the local machine, stop the service for the same.
       
