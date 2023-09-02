@@ -8,13 +8,18 @@ services:
       FLASK_ENV: production
     depends_on:
       - db
+    networks:
+      - mynetwork
 
   db:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: shivdb_17aug
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: demoDB_Arun
     ports:
       - "3306:3306"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
