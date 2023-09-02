@@ -1,5 +1,17 @@
 version: '3'
 services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: demoDB_Arun
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
+    volumes:
+      - ./int.sql:/docker-entrypoint-initdb.d
+
   app:
     build: .
     ports:
@@ -11,15 +23,6 @@ services:
     networks:
       - mynetwork
 
-  db:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: 12345
-      MYSQL_DATABASE: demoDB_Arun
-    ports:
-      - "3306:3306"
-    networks:
-      - mynetwork
 
 networks:
   mynetwork:
