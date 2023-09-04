@@ -47,5 +47,5 @@ Go to main working directory where the 'docker-compose.yml' and 'Dockerfile' is 
       
       * Open 'Docker Desktop'
         
-      * Re-start the 'app' container again
+      * Re-start the 'app' container again from the 'Docker Desktop'
 
